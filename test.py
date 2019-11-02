@@ -1,12 +1,16 @@
-numberLetterMap = {
-    2: 'abc',
-    3: 'def',
-    4: 'ghi',
-    5: 'jkl',
-    6: 'mno',
-    7: 'pqrs',
-    8: 'tuv',
-    9: 'wxyz',
-}
-a = 2
-print(numberLetterMap[a])
+def fibonacci(n):
+    if (n == 0):
+        return 0
+
+    a = 0
+    b = 1
+
+    for _ in range(2, n):
+        c = a + b
+        a = b
+        b = c
+
+    return c
+
+print(fibonacci(5))
+# 0 1 1 2 3
