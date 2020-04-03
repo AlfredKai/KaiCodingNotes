@@ -1,5 +1,3 @@
-from math import floor
-
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
@@ -12,7 +10,7 @@ class Solution:
         while head != None:
             a.append(head.val)
             head = head.next
-        for i in range(0, floor(len(a) / 2)):
+        for i in range(0, int(len(a) / 2)):
             if a[i] != a[-(i + 1)]:
                 return False
         

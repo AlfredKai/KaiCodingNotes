@@ -1,7 +1,6 @@
 from typing import List
 
 def DFS(graph: List[List[int]]):
-    stack = []
     stack = [0]
     visited = set()
     v = stack[0]
@@ -19,6 +18,9 @@ def DFS(graph: List[List[int]]):
             v = stack.pop()
             print(v)
     return 0
+
+def DFSRecursive(graph:List[List[int]], start, visited: List):
+    
 
 #         0  1  2  3  4  5  6
 graph = [[1, 1, 1, 0, 0, 0, 0], #0
