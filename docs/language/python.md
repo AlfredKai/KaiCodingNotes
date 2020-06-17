@@ -4,6 +4,8 @@
 
 [Python Tips](http://book.pythontips.com/en/latest/index.html)
 
+[The Little Book of Python Anti-Patterns](https://docs.quantifiedcode.com/python-anti-patterns/index.html)
+
 - There's no `null`, use `None`
 - *boolean operators*: **and**, **or** and **not**
 - Use `int()` to cast `float`
@@ -11,6 +13,29 @@
 - square root: n**(1/2)
 - check divisible by modulus(mod) operator `%`
 - list initialization with default value: [0,0] + [1]*n
+- list of lists initialization x = [[] for i in range(n)]
+
+### Useful Built-in Libraries
+
+- str(), int()
+- isdigit()
+- sorted()
+- reversed()
+- bisect
+  - bisect_left(list, item[, lo[, hi]])
+  - insort_left(list, item[, lo[, hi]])
+- zip()
+- deque
+- heapq
+  - heapify(x)
+  - heappush(heap, item)
+  - heappop(heap)
+- collections
+  - deque
+    - append(x)
+    - appendleft(x)
+    - pop()
+    - popleft()
 
 ### Dont use mutable data as default argument
 
@@ -103,6 +128,12 @@ when you have to record the element's index in an array for futher purpose.
 
 ```py
 nums = [(n,i) for i,n in enumerate(nums)]
+```
+
+### Middle of low and high
+
+```py
+mid = low + high // 2
 ```
 
 ### Traversal Linked List

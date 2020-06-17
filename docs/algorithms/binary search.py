@@ -24,6 +24,7 @@ def binarySearchRecurrion(arr, x, l, r):
 a = [1, 2, 4, 4, 8]
 print(binarySearch(a ,8))
 print(binarySearch(a ,4))
+print(binarySearch([1] ,1))
 print()
 print(binarySearchRecurrion(a ,8, 0, len(a)-1))
 print(binarySearchRecurrion(a ,4, 0, len(a)-1))
