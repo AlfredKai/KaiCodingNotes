@@ -35,10 +35,31 @@ class Solution:
             finishedNum[uniqueNums[i]] = 1
         if 0 in hasNum and hasNum[0] > 2:
             r.append([0, 0, 0])
-        print(finishedNum)
+        # print(finishedNum)
         return r
 
-a = Solution()
+from collections import defaultdict
+
+class Solution2:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        two_sum = defaultdict(list)
+        for i in range(len(nums)):
+            for j in range(i+1, len(nums)):
+                two_sum[nums[i] + nums[j]].append([i, j])
+        # print(two_sum)
+        r = []
+        for i, n in enumerate(nums):
+            if -n in two_sum:
+                for s in two_sum[-n]:
+                    if i not in s:
+                        c = s.copy()
+                        c.append(i)
+                        # print(c)
+                        r.append(c)
+        return r
+
+
+a = Solution2()
 start = time.time()
 # print(a.threeSum([-1, 0, 1, 2, -1, -4])) # expected: [[-1, 0, 1],[-1, -1, 2]]
 # print(a.threeSum([0, 0, 0])) # expected: [[0, 0, 0]]
