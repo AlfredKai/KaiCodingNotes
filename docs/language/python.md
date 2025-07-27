@@ -1,4 +1,4 @@
-# Python
+****# Python
 
 ## Basics
 
@@ -25,6 +25,7 @@
   - bisect_left(list, item[, lo[, hi]])
   - insort_left(list, item[, lo[, hi]])
 - zip()
+- setdefault()
 - deque
 - heapq
   - heapify(x)
@@ -110,8 +111,24 @@ Use `in` to see if a value exists in any of Python’s iterable data types, nota
 
 ### Common Libraries
 
+sorting
+
 ```py
 [].sort()
+[].sort(reverse = True)
+```
+
+inf
+
+```py
+math.inf
+-math.inf
+```
+
+print without newline
+
+```py
+print('Hello, World!', end=' ')
 ```
 
 ### Ternary Operators
@@ -119,6 +136,59 @@ Use `in` to see if a value exists in any of Python’s iterable data types, nota
 ```py
 condition_if_true if condition else condition_if_false
 ```
+
+## Sorting
+
+[Sorting HOW TO](https://docs.python.org/3/howto/sorting.html#sortinghowto)
+
+### Operator Module Functions as Key Functions
+
+- itemgetter()
+- attrgetter()
+- methodcaller()
+
+```py
+sorted(student_tuples, key=itemgetter(1,2))
+```
+
+### Sort Stability and Complex Sorts
+
+Sort the student data by descending *grade* and then ascending *age*, do the *age* sort first and then sort again using *grade*:
+
+```py
+s = sorted(student_objects, key=attrgetter('age'))     # sort on secondary key
+sorted(s, key=attrgetter('grade'), reverse=True)       # now sort on primary key, descending
+```
+
+**The reverse parameter still maintains sort stability.**
+
+### Custom Sorting using __lt__()
+
+The sort routines are guaranteed to use `__lt__()` when making comparisons between two objects. So, it is easy to add a standard sort order to a class by defining an `__lt__()` method:
+
+```py
+Student.__lt__ = lambda self, other: self.age < other.age
+```
+
+```py
+class LargerNumKey(str):
+    def __lt__(x, y):
+        return x+y > y+x
+
+class Solution:
+    def largestNumber(self, nums):
+        largest_num = ''.join(sorted(map(str, nums), key=LargerNumKey))
+        return '0' if largest_num[0] == '0' else largest_num
+```
+
+### Sequences Compare Rules
+
+[Value comparisons](https://docs.python.org/3/reference/expressions.html#value-comparisons)
+
+Lexicographical comparison between built-in collections works as follows:
+
+- For two collections to compare equal, they must be of the same type, have the same length, and each pair of corresponding elements must compare equal (for example, `[1,2] == (1,2)` is false because the type is not the same).
+- Collections that support order comparison are ordered the same as their first unequal elements (for example, `[1,2,x] <= [1,2,y]` has the same value as `x <= y`). If a corresponding element does not exist, the shorter collection is ordered first (for example, `[1,2] < [1,2,3]` is true).
 
 ## Patterns
 
